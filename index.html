@@ -15,6 +15,7 @@
     import {SetupWinAppleScene} from "./src/setup-win-apple.ts";
     import {SetupLinux} from "./src/setup-linux.ts";
     import {GettingStarted} from "./src/getting-started.ts";
+    import {PlacePart} from "./src/place-part.ts";
     import {RunGame} from "./src/run-game.ts";
 
     const sketchHolder = document.getElementById('sketch-holder');
@@ -33,6 +34,7 @@
 
             // tutorials
             ["gettingStarted", new GettingStarted()],
+            ["placePart", new PlacePart()],
             ["runGame", new RunGame()],
         ],
         [],

@@ -8,14 +8,13 @@ export class GettingStarted extends Scene {
     title: Label;
 
     uiImage: Sprite = new Sprite("home.png", 0, -2, {size: 28.0});
-    arrow: Arrow = new Arrow(-14, 0);
+    arrow: Arrow = new Arrow(-14, 0, Math.PI * 3 / 4);
 
-    navButton: NavButton = new NavButton('right', 'runGame');
+    navButton: NavButton = new NavButton('right', 'placePart');
 
     constructor() {
         super();
         this.title = new Label("Platz erstellen", 0, 16, {fontsize: 2.5, horizAlign: 'center'});
-        this.arrow.sprite.rotation = Math.PI * 3 / 4;
     }
 
     init(c: Context) {

@@ -10,10 +10,10 @@ export class Arrow implements InteractiveElement {
 
     sprite: Sprite;
 
-    constructor(x: number, y: number) {
+    constructor(x: number, y: number, rotation: number = 0) {
         this.x = x;
         this.y = y;
-        this.sprite = new Sprite("arrow.png", this.x, this.y, {size: 2});
+        this.sprite = new Sprite("arrow.png", this.x, this.y, {size: 2, rotation});
     }
 
 
