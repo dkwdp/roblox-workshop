@@ -1,14 +1,17 @@
 import {Scene, Context, Sprite, Label} from 'dkwdpil';
 
 export class StartScene extends Scene {
-    _title: Label = new Label("Roblox Workshop", 0, 16, {fontsize: 3, horizAlign: 'center'});
+    _title: Label = new Label("Roblox Workshop", 0, 16, {fontsize: 2.5, horizAlign: 'center'});
 
     // setup
-    windowsSprite: Sprite = new Sprite("windows.png", -22.5, 10, {size: 5.0});
-    linuxSprite: Sprite = new Sprite("linux.png", -25, 7, {size: 5.0});
-    appleSprite: Sprite = new Sprite("apple.png", -20, 7, {size: 5.0});
-    _setupLabel: Label = new Label("1. Installation", -22.6, 4, {fontsize: 1.5, horizAlign: 'center'})
+    windowsSprite: Sprite = new Sprite("windows.png", -22.5, 7.5, {size: 5.0});
+    linuxSprite: Sprite = new Sprite("linux.png", -25, 4.5, {size: 5.0});
+    appleSprite: Sprite = new Sprite("apple.png", -20, 4.5, {size: 5.0});
+    setupLabel: Label = new Label("1. Installation", -22.6, 0, {fontsize: 1.5, horizAlign: 'center'})
 
+    // tutorials
+    gettingStarted: Sprite = new Sprite("baseplate.png", 0, 6, {size: 10.0});
+    gettingStartedLabel: Label = new Label("2. Erste Schritte", 0, 0, {fontsize: 1.5, horizAlign: 'center'})
 
     init(context: Context): void {
         context.imageMode(context.CENTER);
@@ -26,12 +29,15 @@ export class StartScene extends Scene {
                 sprite.size = 5.0;
             }
         }
+        if (this.gettingStarted.touches(c.mousePos.x, c.mousePos.y, c)) {
+            this.gettingStarted.size = 10.2;
+        } else {
+            this.gettingStarted.size = 10.0;
+        }
         if (this.windowsSprite.clicked) c.nextScene = "setupWindows";
         if (this.appleSprite.clicked) c.nextScene = "setupApple";
         if (this.linuxSprite.clicked) c.nextScene = "setupLinux";
-    }
 
-    duration(): number {
-        return -1;
+        if (this.gettingStarted.clicked) c.nextScene = "gettingStarted";
     }
 }

@@ -14,6 +14,8 @@
     import {StartScene} from "./src/start-scene";
     import {SetupWinAppleScene} from "./src/setup-win-apple.ts";
     import {SetupLinux} from "./src/setup-linux.ts";
+    import {GettingStarted} from "./src/getting-started.ts";
+    import {RunGame} from "./src/run-game.ts";
 
     const sketchHolder = document.getElementById('sketch-holder');
     if (!sketchHolder) {
@@ -23,12 +25,22 @@
         sketchHolder,
         [
             ["startScene", new StartScene()],
+
+            // setup
             ["setupApple", new SetupWinAppleScene("apple")],
             ["setupWindows", new SetupWinAppleScene("windows")],
             ["setupLinux", new SetupLinux()],
+
+            // tutorials
+            ["gettingStarted", new GettingStarted()],
+            ["runGame", new RunGame()],
         ],
         [],
-        ["back_button.png", "linux.png", "windows.png", "apple.png"]
+        [
+            "back_button.png", "arrow.png",
+            "linux.png", "windows.png", "apple.png",
+            "baseplate.png", "home.png", "menu.png",
+        ]
     );
 </script>
 </body>
