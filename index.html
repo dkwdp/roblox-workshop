@@ -7,26 +7,29 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="sketch-holder"></div>
+<div id="sketch-holder"></div>
 
-  <script type="module">
-    import {StartScene} from "./src/start-scene";
-    import {NextScene} from "./src/next-scene";
+<script type="module">
     import {initScenes} from "dkwdpil";
+    import {StartScene} from "./src/start-scene";
+    import {SetupWinAppleScene} from "./src/setup-win-apple.ts";
+    import {SetupLinux} from "./src/setup-linux.ts";
 
     const sketchHolder = document.getElementById('sketch-holder');
     if (!sketchHolder) {
-      throw new Error('Could not find sketch holder element');
+        throw new Error('Could not find sketch holder element');
     }
     initScenes(
-            sketchHolder,
-            [
-              ["startScene", new StartScene()],
-              ["nextScene", new NextScene()],
-            ],
-            [],
-            ["face.png", "play.png"]
+        sketchHolder,
+        [
+            ["startScene", new StartScene()],
+            ["setupApple", new SetupWinAppleScene("apple")],
+            ["setupWindows", new SetupWinAppleScene("windows")],
+            ["setupLinux", new SetupLinux()],
+        ],
+        [],
+        ["back_button.png", "linux.png", "windows.png", "apple.png"]
     );
-  </script>
+</script>
 </body>
 </html>
