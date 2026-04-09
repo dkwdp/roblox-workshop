@@ -18,8 +18,12 @@ export class StartScene extends Scene {
     movementLabel: Label = new Label("3. Platzieren", 22.5, 1, {fontsize: 1.5, horizAlign: 'center'})
 
     // attributes
-    attributes: Sprite = new Sprite("attributes.png", -22.5, -8, {size: 10.0});
-    attributesLabel: Label = new Label("4. Eigenschaften", -22.5, -14, {fontsize: 1.5, horizAlign: 'center'})
+    attributes: Sprite = new Sprite("attributes.png", -11, -8, {size: 10.0});
+    attributesLabel: Label = new Label("4. Eigenschaften", -11, -14, {fontsize: 1.5, horizAlign: 'center'})
+
+    // terrain
+    terrain: Sprite = new Sprite("terrain.png", 11, -8, {size: 10.0});
+    terrainLabel: Label = new Label("4. Terrain", 11, -14, {fontsize: 1.5, horizAlign: 'center'})
 
     init(context: Context): void {
         context.imageMode(context.CENTER);
@@ -37,7 +41,7 @@ export class StartScene extends Scene {
                 sprite.size = 5.0;
             }
         }
-        for (const sprite of [this.gettingStarted, this.movement, this.attributes]) {
+        for (const sprite of [this.gettingStarted, this.movement, this.attributes, this.terrain]) {
             if (sprite.touches(c.mousePos.x, c.mousePos.y, c)) {
                 sprite.size = 10.2;
             } else {
@@ -53,5 +57,7 @@ export class StartScene extends Scene {
         if (this.movement.clicked) c.nextScene = "movement";
 
         if (this.attributes.clicked) c.nextScene = "attributes";
+
+        if (this.terrain.clicked) c.nextScene = "terrain1";
     }
 }

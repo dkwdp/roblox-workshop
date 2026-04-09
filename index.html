@@ -23,6 +23,8 @@
     import {Tasks1} from "./src/tasks1.ts";
     import {Tasks2} from "./src/tasks2.ts";
     import {Attributes} from "./src/attributes.ts";
+    import {Terrain} from "./src/terrain.ts";
+    import {Tasks3} from "./src/tasks3.ts";
 
     const sketchHolder = document.getElementById('sketch-holder');
     if (!sketchHolder) {
@@ -52,12 +54,20 @@
             // attributes
             ["attributes", new Attributes()],
             ["tasks2", new Tasks2()],
+
+            // terrain
+            ["terrain1", new Terrain(1)],
+            ["terrain2", new Terrain(2)],
+            ["terrain3", new Terrain(3)],
+            ["terrain4", new Terrain(4)],
+            ["terrain5", new Terrain(5)],
+            ["tasks3", new Tasks3()],
         ],
         [],
         [
-            "back_button.png", "arrow.png", "movement.png", "worktime.png", "attributes.png",
+            "back_button.png", "arrow.png", "movement.png", "worktime.png", "attributes.png", "terrain.png",
             "linux.png", "windows.png", "apple.png",
-            "baseplate.png", "home.png", "menu.png",
+            "baseplate.png", "home.png", "menu.png", "terrainUi.png",
         ]
     );
 </script>
