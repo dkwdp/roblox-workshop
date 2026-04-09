@@ -20,6 +20,8 @@
     import {Movement} from "./src/movement.ts";
     import {Anker} from "./src/anker.ts";
     import {Tasks1} from "./src/tasks1.ts";
+    import {Tasks2} from "./src/tasks2.ts";
+    import {Attributes} from "./src/attributes.ts";
 
     const sketchHolder = document.getElementById('sketch-holder');
     if (!sketchHolder) {
@@ -44,10 +46,14 @@
             ["movement", new Movement()],
             ["anker", new Anker()],
             ["tasks1", new Tasks1()],
+
+            // attributes
+            ["attributes", new Attributes()],
+            ["tasks2", new Tasks2()],
         ],
         [],
         [
-            "back_button.png", "arrow.png", "movement.png", "worktime.png",
+            "back_button.png", "arrow.png", "movement.png", "worktime.png", "attributes.png",
             "linux.png", "windows.png", "apple.png",
             "baseplate.png", "home.png", "menu.png",
         ]
