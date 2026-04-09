@@ -9,9 +9,13 @@ export class StartScene extends Scene {
     appleSprite: Sprite = new Sprite("apple.png", -20, 4.5, {size: 5.0});
     setupLabel: Label = new Label("1. Installation", -22.6, 0, {fontsize: 1.5, horizAlign: 'center'})
 
-    // tutorials
+    // getting started
     gettingStarted: Sprite = new Sprite("baseplate.png", 0, 6, {size: 10.0});
     gettingStartedLabel: Label = new Label("2. Erste Schritte", 0, 0, {fontsize: 1.5, horizAlign: 'center'})
+
+    // movement
+    movement: Sprite = new Sprite("movement.png", 22.5, 6, {size: 10.0});
+    movementLabel: Label = new Label("3. Platzieren", 22.5, 0, {fontsize: 1.5, horizAlign: 'center'})
 
     init(context: Context): void {
         context.imageMode(context.CENTER);
@@ -29,15 +33,19 @@ export class StartScene extends Scene {
                 sprite.size = 5.0;
             }
         }
-        if (this.gettingStarted.touches(c.mousePos.x, c.mousePos.y, c)) {
-            this.gettingStarted.size = 10.2;
-        } else {
-            this.gettingStarted.size = 10.0;
+        for (const sprite of [this.gettingStarted, this.movement]) {
+            if (sprite.touches(c.mousePos.x, c.mousePos.y, c)) {
+                sprite.size = 10.2;
+            } else {
+                sprite.size = 10.0;
+            }
         }
         if (this.windowsSprite.clicked) c.nextScene = "setupWindows";
         if (this.appleSprite.clicked) c.nextScene = "setupApple";
         if (this.linuxSprite.clicked) c.nextScene = "setupLinux";
 
         if (this.gettingStarted.clicked) c.nextScene = "gettingStarted";
+
+        if (this.movement.clicked) c.nextScene = "movement";
     }
 }

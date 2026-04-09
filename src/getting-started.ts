@@ -14,7 +14,7 @@ export class GettingStarted extends Scene {
 
     constructor() {
         super();
-        this.title = new Label("Platz erstellen", 0, 16, {fontsize: 2.5, horizAlign: 'center'});
+        this.title = new Label("Loslegen!", 0, 16, {fontsize: 2.5, horizAlign: 'center'});
     }
 
     init(c: Context) {

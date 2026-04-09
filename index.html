@@ -17,6 +17,9 @@
     import {GettingStarted} from "./src/getting-started.ts";
     import {PlacePart} from "./src/place-part.ts";
     import {RunGame} from "./src/run-game.ts";
+    import {Movement} from "./src/movement.ts";
+    import {Anker} from "./src/anker.ts";
+    import {Tasks1} from "./src/tasks1.ts";
 
     const sketchHolder = document.getElementById('sketch-holder');
     if (!sketchHolder) {
@@ -32,14 +35,19 @@
             ["setupWindows", new SetupWinAppleScene("windows")],
             ["setupLinux", new SetupLinux()],
 
-            // tutorials
+            // getting started
             ["gettingStarted", new GettingStarted()],
             ["placePart", new PlacePart()],
             ["runGame", new RunGame()],
+
+            // movement
+            ["movement", new Movement()],
+            ["anker", new Anker()],
+            ["tasks1", new Tasks1()],
         ],
         [],
         [
-            "back_button.png", "arrow.png",
+            "back_button.png", "arrow.png", "movement.png", "worktime.png",
             "linux.png", "windows.png", "apple.png",
             "baseplate.png", "home.png", "menu.png",
         ]
