@@ -10,11 +10,11 @@ export class StartSceneScripting extends Scene {
     scriptingLabel: Label = new Label("1. Scripten", -11, 1, {fontsize: 1.5, horizAlign: 'center'})
 
     // changing objects
-    changingObjects: Sprite = new Sprite("terrain.png", 11, 7, {size: 10.0});
+    changingObjects: Sprite = new Sprite("properties.png", 11, 7, {size: 10.0});
     changingObjectsLabel: Label = new Label("2. Objekte ändern", 11, 1, {fontsize: 1.5, horizAlign: 'center'})
 
     // events
-    events: Sprite = new Sprite("baseplate.png", 0, -8, {size: 10.0});
+    events: Sprite = new Sprite("events.png", 0, -8, {size: 10.0});
     eventsLabel: Label = new Label("3. Events", 0, -14, {fontsize: 1.5, horizAlign: 'center'})
 
     init(context: Context): void {

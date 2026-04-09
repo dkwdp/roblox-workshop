@@ -32,6 +32,9 @@
     import {ReferenceObjects} from "./src/reference-objects.ts";
     import {ChangeProperties} from "./src/change-properties.ts";
     import {DisappearingPlattform} from "./src/disappearing-plattform.ts";
+    import {Events} from "./src/events.ts";
+    import {DisappearingPlattformEvent} from "./src/disappearing-plattform-event.ts";
+    import {PowerUps} from "./src/power-ups.ts";
 
     const sketchHolder = document.getElementById('sketch-holder');
     if (!sketchHolder) {
@@ -82,13 +85,20 @@
             ["referenceObjects", new ReferenceObjects()],
             ["changeProperties", new ChangeProperties()],
             ["disappearingPlattform", new DisappearingPlattform()],
+
+            // events
+            ["events", new Events()],
+            ["disappearingPlattformEvents", new DisappearingPlattformEvent()],
+            ["powerUps", new PowerUps()],
         ],
         [],
         [
             "back_button.png", "arrow.png", "movement.png", "worktime.png", "attributes.png", "terrain.png",
             "linux.png", "windows.png", "apple.png",
             "baseplate.png", "home.png", "menu.png", "terrainUi.png",
-            "helloWorld.png",
+            "helloWorld.png", "properties.png", "events.png", "addScript.png", "printingExample.png",
+            "outputWindow.png", "referenceObjectExample.png", "exampleChangeAttribute.png",
+            "disappearingPartExample.png", "exampleEvent.png", "exampleDisappearingPlattform.png", "powerUp.png"
         ]
     );
 </script>
