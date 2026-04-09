@@ -15,6 +15,7 @@
     import {SetupWinAppleScene} from "./src/setup-win-apple.ts";
     import {SetupLinux} from "./src/setup-linux.ts";
     import {GettingStarted} from "./src/getting-started.ts";
+    import {Camera} from "./src/camera.ts";
     import {PlacePart} from "./src/place-part.ts";
     import {RunGame} from "./src/run-game.ts";
     import {Movement} from "./src/movement.ts";
@@ -39,6 +40,7 @@
 
             // getting started
             ["gettingStarted", new GettingStarted()],
+            ["camera", new Camera()],
             ["placePart", new PlacePart()],
             ["runGame", new RunGame()],
 

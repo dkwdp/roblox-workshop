@@ -10,7 +10,7 @@ export class PlacePart extends Scene {
     uiImage: Sprite = new Sprite("menu.png", 0, -2, {size: 28.0});
     arrow: Arrow = new Arrow(-9.8, 6.8, -Math.PI / 4);
 
-    navButtonLeft: NavButton = new NavButton('left', 'gettingStarted');
+    navButtonLeft: NavButton = new NavButton('left', 'camera');
     navButtonRight: NavButton = new NavButton('right', 'runGame');
 
     constructor() {

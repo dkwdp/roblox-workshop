@@ -10,7 +10,7 @@ export class GettingStarted extends Scene {
     uiImage: Sprite = new Sprite("home.png", 0, -2, {size: 28.0});
     arrow: Arrow = new Arrow(-14, 0, Math.PI * 3 / 4);
 
-    navButton: NavButton = new NavButton('right', 'placePart');
+    navButton: NavButton = new NavButton('right', 'camera');
 
     constructor() {
         super();
