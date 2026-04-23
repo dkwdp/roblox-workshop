@@ -1,26 +1,35 @@
-import {Context, InteractiveElement, Sprite} from "dkwdpil";
+import {Context, InteractiveElement, InteractiveElementDump, Sprite} from "dkwdpil";
+import {Rect} from "dkwdpil/dist/element-helpers/rect";
 
-export class BackButton implements InteractiveElement {
-    _interactiveElementMarker: "interactiveElement" = "interactiveElement";
-
-    x: number;
-    y: number;
+export class BackButton extends InteractiveElement {
     target: string;
-
-    visible: boolean = true;
-
     sprite: Sprite;
 
     constructor(x: number, y: number, target: string = "startScene") {
-        this.x = x;
-        this.y = y;
+        super("back_button", x, y);
         this.target = target;
-        this.sprite = new Sprite("back_button.png", this.x, this.y, {size: 2});
+        this.sprite = new Sprite("back_button_sprite", "back_button.png", x, y, {size: 2});
+    }
+
+    getBoundingBox(): Rect {
+        return this.sprite.getBoundingBox();
+    }
+
+    dump(): InteractiveElementDump {
+        throw new Error("Method not implemented.");
+    }
+
+    getSourceCode(): string {
+        throw new Error("Method not implemented.");
+    }
+
+    load(data: InteractiveElementDump): void {
+        throw new Error("Method not implemented.");
     }
 
 
-    draw(c: Context) {
-        this.sprite.draw(c);
+    draw() {
+        this.sprite.draw();
     }
 
     update(c: Context) {

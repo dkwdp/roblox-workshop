@@ -1,27 +1,41 @@
-import {Context, InteractiveElement, Sprite} from "dkwdpil";
+import {Context, InteractiveElement, InteractiveElementDump, Sprite} from "dkwdpil";
+import {Rect} from "dkwdpil/dist/element-helpers/rect";
 
-export class Arrow implements InteractiveElement {
-    _interactiveElementMarker: "interactiveElement" = "interactiveElement";
-
-    x: number;
-    y: number;
-
-    visible: boolean = true;
-
+export class Arrow extends InteractiveElement {
     sprite: Sprite;
 
-    constructor(x: number, y: number, rotation: number = 0) {
-        this.x = x;
-        this.y = y;
-        this.sprite = new Sprite("arrow.png", this.x, this.y, {size: 2, rotation});
+    constructor(identifier: string, x: number, y: number, rotation: number = 0) {
+        super(identifier, x, y);
+        this.sprite = new Sprite(identifier + "_sprite", "arrow.png", this.x, this.y, {size: 2, rotation});
     }
 
-
-    draw(c: Context) {
-        this.sprite.draw(c);
+    draw() {
+        this.sprite.draw();
     }
 
     update(c: Context) {
+        this.sprite.update(c);
+        super.update(c);
         this.sprite.size = 2 + Math.sin(c.globalTime * Math.PI * 2 * 0.6) * 0.1;
+    }
+
+    touches(x?: number, y?: number): boolean {
+        return this.sprite.touches(x, y);
+    }
+
+    getBoundingBox(): Rect {
+        return this.sprite.getBoundingBox();
+    }
+
+    dump(): InteractiveElementDump {
+        throw new Error("Method not implemented.");
+    }
+
+    getSourceCode(): string {
+        throw new Error("Method not implemented.");
+    }
+
+    load(data: InteractiveElementDump): void {
+        throw new Error("Method not implemented.");
     }
 }

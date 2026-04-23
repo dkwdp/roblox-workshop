@@ -1,33 +1,26 @@
-import {Scene, Context, Sprite, Label} from 'dkwdpil';
+import {AutoDrawScene, Context, Sprite, Label} from 'dkwdpil';
 import {NavButton} from "./nav-button";
 import {BackButton} from "./back-button";
 
-export class Printing extends Scene {
+export class Printing extends AutoDrawScene {
     _backButton = new BackButton(-29, 15, "startScripting");
-    title: Label = new Label("Text anzeigen", 0, 16, {fontsize: 2.5, horizAlign: 'center'});
+    title: Label = new Label("title", "Text anzeigen", 0, 16, {fontsize: 2.5, horizAlign: 'center'});
 
     navButtonLeft: NavButton = new NavButton('left', 'addScript');
     navButtonRight: NavButton = new NavButton('right', 'outputWindow');
 
-    sprite: Sprite = new Sprite("printingExample.png", 13, -2, {size: 26.0});
+    sprite: Sprite = new Sprite("sprite", "printingExample.png", 13, -2, {size: 26.0});
 
-    explanation1: Label = new Label("Das einfachste was man machen kann", -26, 2, {fontsize: 1.2});
-    explanation2: Label = new Label("ist einen Text auszugeben.", -26, 0, {fontsize: 1.2});
-    explanation3: Label = new Label("Dafür verwenden wir die print() Funktion.", -26, -2, {fontsize: 1.2});
-    explanation4: Label = new Label("Aber wo kann man den Text jetzt sehen?", -26, -4, {fontsize: 1.2});
-    explanation5: Label = new Label("Tipp: Klicke auf das Bild, um", -26, -8, {fontsize: 1.2});
-    explanation6: Label = new Label("den Quelltext zu kopieren.", -26, -10, {fontsize: 1.2});
+    explanation1: Label = new Label("explanation1", "Das einfachste was man machen kann", -26, 2, {fontsize: 1.2});
+    explanation2: Label = new Label("explanation2", "ist einen Text auszugeben.", -26, 0, {fontsize: 1.2});
+    explanation3: Label = new Label("explanation3", "Dafür verwenden wir die print() Funktion.", -26, -2, {fontsize: 1.2});
+    explanation4: Label = new Label("explanation4", "Aber wo kann man den Text jetzt sehen?", -26, -4, {fontsize: 1.2});
+    explanation5: Label = new Label("explanation5", "Tipp: Klicke auf das Bild, um", -26, -8, {fontsize: 1.2});
+    explanation6: Label = new Label("explanation6", "den Quelltext zu kopieren.", -26, -10, {fontsize: 1.2});
 
     copiedTimepoint: number | null = null;
 
-    init(context: Context): void {
-        this.navButtonLeft.init(context);
-        this.navButtonRight.init(context);
-    }
-
     update(c: Context) {
-        c.background(235);
-
         if (this.sprite.clicked) {
             copyToClipboard("print(\"Dein Text\")").then(() => {
                 this.explanation5.text = "Kopiert!";

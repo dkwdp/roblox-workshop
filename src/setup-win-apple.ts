@@ -1,26 +1,22 @@
-import {Context, Label, Scene, Sprite} from 'dkwdpil';
+import {Context, Label, AutoDrawScene, Sprite} from 'dkwdpil';
 import {BackButton} from "./back-button";
 
-export class SetupWinAppleScene extends Scene {
-    icon: Sprite;
+export class SetupWinAppleScene extends AutoDrawScene {
     _backButton = new BackButton(-29, 15);
     title: Label;
-    instruction1: Label;
-    instruction2: Label;
-    instruction3: Label;
+    icon: Sprite;
+    instruction1: Label = new Label("instruction1", "Öffne ", -28, 3, {fontsize: 1.5});
+    instruction2: Label = new Label("instruction2", "https://create.roblox.com/docs/studio/setup", -28, 0, {fontsize: 1.5});
+    instruction3: Label = new Label("instruction3", "und folge den Anweisungen.", -28, -3, {fontsize: 1.5});
 
     constructor(icon: string) {
         super();
-        this.icon = new Sprite(icon + ".png", 12, 15, {size: 3.0, imageMode: 'center'});
-        this.title = new Label("Setup " + icon.charAt(0).toUpperCase() + icon.slice(1), 0, 16, {fontsize: 2.5, horizAlign: 'center'});
-        this.instruction1 = new Label("Öffne ", -28, 3, {fontsize: 1.5});
-        this.instruction2 = new Label("https://create.roblox.com/docs/studio/setup", -28, 0, {fontsize: 1.5});
-        this.instruction3 = new Label("und folge den Anweisungen.", -28, -3, {fontsize: 1.5});
+        this.title = new Label("title", "Setup " + icon.charAt(0).toUpperCase() + icon.slice(1), 0, 16, {fontsize: 2.5, horizAlign: 'center'});
+        this.icon = new Sprite("icon", icon + ".png", 12, 15, {size: 3.0, imageMode: 'center'});
     }
 
     update(context: Context) {
-        context.background(235);
-
+        super.update(context);
         if (this.instruction2.hovered) {
             context.cursor("pointer");
         } else {

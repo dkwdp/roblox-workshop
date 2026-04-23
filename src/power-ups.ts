@@ -1,4 +1,4 @@
-import {Scene, Context, Sprite, Label} from 'dkwdpil';
+import {AutoDrawScene, Context, Sprite, Label} from 'dkwdpil';
 import {NavButton} from "./nav-button";
 import {BackButton} from "./back-button";
 import {copyToClipboard} from "./printing";
@@ -13,32 +13,27 @@ const COPY_TEXT = `game.Workspace.Part.Touched:Connect(function(p)
 end)
 `
 
-export class PowerUps extends Scene {
+export class PowerUps extends AutoDrawScene {
     _backButton = new BackButton(-29, 15, "startScripting");
-    title: Label = new Label("Power Ups", 0, 16, {fontsize: 2.5, horizAlign: 'center'});
+    title: Label = new Label("title", "Power Ups", 0, 16, {fontsize: 2.5, horizAlign: 'center'});
 
     navButtonLeft: NavButton = new NavButton('left', 'disappearingPlattformEvents');
 
-    sprite: Sprite = new Sprite("powerUp.png", 11, -2, {size: 16.0});
+    sprite: Sprite = new Sprite("sprite", "powerUp.png", 11, -2, {size: 16.0});
 
-    explanation1: Label = new Label("Wir können auch ganz andere.", -26, 8, {fontsize: 1.2});
-    explanation2: Label = new Label("Dinge tun.", -26, 6, {fontsize: 1.2});
-    explanation3: Label = new Label("Hier wird der Spieler schnell,", -26, 4, {fontsize: 1.2});
-    explanation4: Label = new Label("sobald er einen bestimmten", -26, 2, {fontsize: 1.2});
-    explanation5: Label = new Label("Block berührt.", -26, 0, {fontsize: 1.2});
+    explanation1: Label = new Label("explanation1", "Wir können auch ganz andere.", -26, 8, {fontsize: 1.2});
+    explanation2: Label = new Label("explanation2", "Dinge tun.", -26, 6, {fontsize: 1.2});
+    explanation3: Label = new Label("explanation3", "Hier wird der Spieler schnell,", -26, 4, {fontsize: 1.2});
+    explanation4: Label = new Label("explanation4", "sobald er einen bestimmten", -26, 2, {fontsize: 1.2});
+    explanation5: Label = new Label("explanation5", "Block berührt.", -26, 0, {fontsize: 1.2});
 
-    explanation6: Label = new Label("Du kannst wieder auf das Bild klicken,", -26, -4, {fontsize: 1.2});
-    explanation7: Label = new Label("um den Quelltext zu kopieren.", -26, -6, {fontsize: 1.2});
+    explanation6: Label = new Label("explanation6", "Du kannst wieder auf das Bild klicken,", -26, -4, {fontsize: 1.2});
+    explanation7: Label = new Label("explanation7", "um den Quelltext zu kopieren.", -26, -6, {fontsize: 1.2});
 
     copiedTimepoint: number | null = null;
 
-    init(context: Context): void {
-        this.navButtonLeft.init(context);
-    }
-
     update(c: Context) {
-        c.background(235);
-
+        super.update(c);
         if (this.sprite.clicked) {
             copyToClipboard(COPY_TEXT).then(() => {
                 this.explanation6.text = "Kopiert!";

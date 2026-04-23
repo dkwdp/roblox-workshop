@@ -1,20 +1,15 @@
-import {Context, InteractiveElement} from "dkwdpil";
+import {Context, InteractiveElement, InteractiveElementDump} from "dkwdpil";
+import {Rect} from "dkwdpil";
 
 const WIDTH = 4;
 const HEIGHT = 8;
 
-export class NavButton implements InteractiveElement {
-    _interactiveElementMarker: "interactiveElement" = "interactiveElement";
-    x: number;
-    y: number;
+export class NavButton extends InteractiveElement {
     dir: 'left' | 'right';
     nextScene: string;
 
-    visible: boolean = true;
-
     constructor(dir: 'left' | 'right', nextScene: string) {
-        this.x = 0;
-        this.y = 0;
+        super("nav_button_" + dir, 0, 0);
         this.dir = dir;
         this.nextScene = nextScene;
     }
@@ -25,7 +20,8 @@ export class NavButton implements InteractiveElement {
             this.x *= -1;
     }
 
-    draw(c: Context) {
+    draw() {
+        const c = this.getContext();
         const p = c.p;
 
         // Draw gray rectangle
@@ -52,12 +48,25 @@ export class NavButton implements InteractiveElement {
     }
 
     update(c: Context) {
-        for (const evt of c.events) {
-            if (evt.kind === 'mousedown') {
-                if (evt.x > this.x - WIDTH / 2 && evt.x < this.x + WIDTH / 2 && evt.y > this.y - HEIGHT / 2 && evt.y < this.y + HEIGHT / 2) {
-                    c.nextScene = this.nextScene;
-                }
-            }
-        }
+        super.update(c);
+
+        if (this.clicked)
+            c.nextScene = this.nextScene;
+    }
+
+    getBoundingBox(): Rect {
+        return Rect.fromMode(this.x, this.y, WIDTH, HEIGHT, "center");
+    }
+
+    dump(): InteractiveElementDump {
+        throw new Error("Method not implemented.");
+    }
+
+    getSourceCode(): string {
+        throw new Error("Method not implemented.");
+    }
+
+    load(data: InteractiveElementDump): void {
+        throw new Error("Method not implemented.");
     }
 }

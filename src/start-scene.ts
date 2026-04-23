@@ -1,33 +1,34 @@
-import {Scene, Context, Sprite, Label} from 'dkwdpil';
+import {AutoDrawScene, Context, Sprite, Label} from 'dkwdpil';
 import {NavButton} from "./nav-button";
 
-export class StartScene extends Scene {
-    _title: Label = new Label("Roblox Workshop", 0, 16, {fontsize: 2.5, horizAlign: 'center'});
+export class StartScene extends AutoDrawScene {
+    _title: Label = new Label("title", "Roblox Workshop", 0, 16, {fontsize: 2.5, horizAlign: 'center'});
     navButton: NavButton = new NavButton('right', 'startScripting');
 
     // setup
-    windowsSprite: Sprite = new Sprite("windows.png", -20.5, 8.5, {size: 5.0});
-    linuxSprite: Sprite = new Sprite("linux.png", -23, 5.5, {size: 5.0});
-    appleSprite: Sprite = new Sprite("apple.png", -18, 5.5, {size: 5.0});
-    setupLabel: Label = new Label("1. Installation", -21.6, 1, {fontsize: 1.5, horizAlign: 'center'})
+    windowsSprite: Sprite = new Sprite("spriteWindows", "windows.png", -20.5, 8.5, {size: 5.0});
+    linuxSprite: Sprite = new Sprite("spriteLinux", "linux.png", -23, 5.5, {size: 5.0});
+    appleSprite: Sprite = new Sprite("spriteApply", "apple.png", -18, 5.5, {size: 5.0});
+    setupLabel: Label = new Label("setupLabel", "1. Installation", -21.6, 1, {fontsize: 1.5, horizAlign: 'center'})
 
     // getting started
-    gettingStarted: Sprite = new Sprite("baseplate.png", 0, 7, {size: 10.0});
-    gettingStartedLabel: Label = new Label("2. Erste Schritte", 0, 1, {fontsize: 1.5, horizAlign: 'center'})
+    gettingStarted: Sprite = new Sprite("gettingStartedSprite", "baseplate.png", 0, 7, {size: 10.0});
+    gettingStartedLabel: Label = new Label("gettingStartedLabel", "2. Erste Schritte", 0, 1, {fontsize: 1.5, horizAlign: 'center'})
 
     // movement
-    movement: Sprite = new Sprite("movement.png", 20, 7, {size: 10.0});
-    movementLabel: Label = new Label("3. Platzieren", 20, 1, {fontsize: 1.5, horizAlign: 'center'})
+    movement: Sprite = new Sprite("movementSprite", "movement.png", 20, 7, {size: 10.0});
+    movementLabel: Label = new Label("movementLabel", "3. Platzieren", 20, 1, {fontsize: 1.5, horizAlign: 'center'})
 
     // attributes
-    attributes: Sprite = new Sprite("attributes.png", -10, -8, {size: 10.0});
-    attributesLabel: Label = new Label("4. Eigenschaften", -10, -14, {fontsize: 1.5, horizAlign: 'center'})
+    attributes: Sprite = new Sprite("attributesSprite", "attributes.png", -10, -8, {size: 10.0});
+    attributesLabel: Label = new Label("attributesLabel", "4. Eigenschaften", -10, -14, {fontsize: 1.5, horizAlign: 'center'})
 
     // terrain
-    terrain: Sprite = new Sprite("terrain.png", 10, -8, {size: 10.0});
-    terrainLabel: Label = new Label("4. Terrain", 10, -14, {fontsize: 1.5, horizAlign: 'center'})
+    terrain: Sprite = new Sprite("terrainSprite", "terrain.png", 10, -8, {size: 10.0});
+    terrainLabel: Label = new Label("terrainLabel", "4. Terrain", 10, -14, {fontsize: 1.5, horizAlign: 'center'})
 
     init(context: Context): void {
+        super.init(context);
         context.imageMode(context.CENTER);
         context.noStroke();
         context.fill(0);
@@ -35,17 +36,15 @@ export class StartScene extends Scene {
     }
 
     update(c: Context) {
-        c.background(235);
-
         for (const sprite of [this.windowsSprite, this.linuxSprite, this.appleSprite]) {
-            if (sprite.touches(c.mousePos.x, c.mousePos.y, c)) {
+            if (sprite.hovered) {
                 sprite.size = 5.2;
             } else {
                 sprite.size = 5.0;
             }
         }
         for (const sprite of [this.gettingStarted, this.movement, this.attributes, this.terrain]) {
-            if (sprite.touches(c.mousePos.x, c.mousePos.y, c)) {
+            if (sprite.hovered) {
                 sprite.size = 10.2;
             } else {
                 sprite.size = 10.0;
